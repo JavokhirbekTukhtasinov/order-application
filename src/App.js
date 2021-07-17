@@ -5,8 +5,7 @@ import { Fragment, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { uiActions } from './store/ui-slice';
 import Notification from './components/UI/Notification';
-import { cartActions } from './store/cart-slice';
-import fetchedData from './store/cart-actions';
+import { fetchCartData } from './store/cart-actions';
 let isinitial = true;
 function App() {
 	const dispatch = useDispatch();
@@ -17,7 +16,7 @@ function App() {
 	//UseEffect for fetching cart data
 	useEffect(
 		() => {
-			dispatch(fetchedData());
+			dispatch(fetchCartData());
 		},
 		[ dispatch ]
 	);
@@ -66,7 +65,7 @@ function App() {
 				);
 			});
 		},
-		[ cart, dispatch ]
+		[ cart, dispatch, isShowNotification ]
 	);
 	return (
 		<Fragment>
